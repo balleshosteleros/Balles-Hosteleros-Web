@@ -4,12 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import {
   ChevronDown,
-  LayoutDashboard,
   ChefHat,
-  Users,
-  Truck,
-  BarChart3,
-  Shield,
   ArrowRight,
   Check,
   Menu,
@@ -19,6 +14,17 @@ import {
   Database,
   LifeBuoy,
   Globe,
+  Crown,
+  UtensilsCrossed,
+  Briefcase,
+  CheckCircle2,
+  User,
+  Camera,
+  Package,
+  Calculator,
+  FileText,
+  Scale,
+  Plus,
 } from "lucide-react";
 
 /* ─────────────────────────────────────────────
@@ -67,36 +73,136 @@ const gallery = [
   },
 ];
 
-const modules = [
+type ModuleDef = {
+  icon: typeof ChefHat;
+  title: string;
+  desc: string;
+  submodules: string[];
+};
+
+const modules: ModuleDef[] = [
   {
-    icon: LayoutDashboard,
+    icon: Crown,
     title: "Dirección",
-    desc: "Visión completa de tu negocio. Estructura, indicadores y control desde un solo lugar.",
+    desc: "Estructura, planificación y control estratégico de tu negocio desde un solo panel.",
+    submodules: [
+      "Organigrama",
+      "Cronogramas",
+      "Documentación",
+      "Aperturas",
+      "Presentaciones",
+    ],
+  },
+  {
+    icon: UtensilsCrossed,
+    title: "Sala",
+    desc: "Punto de venta, reservas y gestión completa del servicio al cliente.",
+    submodules: ["Punto de venta", "Reservas", "Clientes"],
   },
   {
     icon: ChefHat,
     title: "Cocina",
-    desc: "Fichas técnicas, escandallos, partidas y elaboraciones. Todo medido, todo costeado.",
+    desc: "Fichas técnicas, elaboraciones, partidas y control APPCC medido al detalle.",
+    submodules: [
+      "Comandas",
+      "Nuevas recetas",
+      "Fichas técnicas",
+      "Elaboraciones",
+      "Partidas",
+      "Temperaturas",
+    ],
   },
   {
-    icon: Users,
-    title: "RRHH",
-    desc: "Contratos, nóminas, turnos, vacaciones y documentación de tu equipo. Sin papeles sueltos.",
+    icon: Briefcase,
+    title: "Gerencia",
+    desc: "Mantenimiento, ratios, comunicados y pulso operativo diario del negocio.",
+    submodules: [
+      "Mantenimiento",
+      "Revisiones",
+      "Descuentos",
+      "Ratios",
+      "Comunicados",
+      "Encuestas",
+    ],
   },
   {
-    icon: Truck,
+    icon: CheckCircle2,
+    title: "Calidad",
+    desc: "Auditorías, inspecciones y seguimiento real de estándares de calidad.",
+    submodules: ["Auditorías", "Empleados", "Clientes", "Inspecciones"],
+  },
+  {
+    icon: User,
+    title: "Recursos Humanos",
+    desc: "Equipo, fichajes, nóminas, formación y reclutamiento sin papeles sueltos.",
+    submodules: [
+      "Empleados",
+      "Fichajes",
+      "Calendarios",
+      "Horarios",
+      "Reclutamiento",
+      "Boarding",
+      "Bonus",
+      "Salarios",
+      "Pagos",
+      "Formación",
+    ],
+  },
+  {
+    icon: Camera,
+    title: "Marketing",
+    desc: "Campañas, carta digital, página web, fidelización y captación en un solo lugar.",
+    submodules: [
+      "Calendario",
+      "Contenido",
+      "Campañas",
+      "Carta digital",
+      "Página web",
+      "Fidelización",
+      "Captación",
+    ],
+  },
+  {
+    icon: Package,
     title: "Logística",
-    desc: "Proveedores, pedidos, inventario y control de mermas. Compra con criterio, no por inercia.",
+    desc: "Proveedores, pedidos, stock e inventarios con trazabilidad de principio a fin.",
+    submodules: [
+      "Proveedores",
+      "Productos",
+      "Pedidos",
+      "Stock",
+      "Inventarios",
+    ],
   },
   {
-    icon: BarChart3,
+    icon: Calculator,
     title: "Contabilidad",
-    desc: "Facturas, gastos, impuestos y cuenta de resultados. Números claros para decisiones reales.",
+    desc: "Facturas, bancos, conciliación e impuestos al día, con escenarios y reglas.",
+    submodules: [
+      "Contactos",
+      "Operaciones",
+      "Facturas",
+      "Impuestos",
+      "Transacciones",
+      "Conciliación",
+      "Calendario",
+      "Escenarios",
+      "Bancos",
+      "Etiquetas",
+      "Reglas automáticas",
+    ],
   },
   {
-    icon: Shield,
-    title: "Jurídico y Gestoría",
-    desc: "Licencias, contratos, inspecciones y comunicaciones con tu gestoría. Todo en orden.",
+    icon: FileText,
+    title: "Gestoría",
+    desc: "Modelos y presentaciones listos para enviar a tu asesoría sin errores.",
+    submodules: ["Modelos", "Presentaciones"],
+  },
+  {
+    icon: Scale,
+    title: "Jurídico",
+    desc: "Procesos legales, contratos y documentación centralizada y accesible.",
+    submodules: ["Procesos"],
   },
 ];
 
@@ -230,8 +336,15 @@ function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-[#0b1120]/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <a href="/" className="text-lg font-bold tracking-tight text-white">
-          Balles Hosteleros
+        <a href="/" className="flex items-center" aria-label="Balles Hosteleros">
+          <Image
+            src="/isotipo-balles.png"
+            alt="Balles Hosteleros"
+            width={44}
+            height={44}
+            priority
+            className="h-10 w-10 object-contain"
+          />
         </a>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -299,6 +412,67 @@ function Navbar() {
         </div>
       )}
     </nav>
+  );
+}
+
+function ModuleCard({
+  mod,
+  open,
+  onToggle,
+}: {
+  mod: ModuleDef;
+  open: boolean;
+  onToggle: () => void;
+}) {
+  const Icon = mod.icon;
+  return (
+    <div
+      className={`group rounded-xl border p-7 transition ${
+        open
+          ? "border-blue-500/40 bg-blue-600/[0.07]"
+          : "border-white/5 bg-white/[0.02] hover:border-white/10 hover:bg-white/[0.04]"
+      }`}
+    >
+      <Icon
+        size={24}
+        className={`mb-4 transition ${
+          open ? "text-blue-300" : "text-blue-400 group-hover:text-blue-300"
+        }`}
+      />
+      <h3 className="mb-2 text-[15px] font-semibold">{mod.title}</h3>
+      <p className="text-sm leading-relaxed text-slate-400">{mod.desc}</p>
+
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={open}
+        className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold tracking-wide text-blue-400 transition hover:text-blue-300"
+      >
+        <Plus
+          size={14}
+          className={`transition-transform duration-200 ${open ? "rotate-45" : ""}`}
+        />
+        {open ? "Ocultar submódulos" : `Ver ${mod.submodules.length} submódulos`}
+      </button>
+
+      <div
+        className={`grid overflow-hidden transition-all duration-300 ${
+          open ? "mt-4 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <ul className="min-h-0 space-y-2 border-t border-white/5 pt-4">
+          {mod.submodules.map((sub) => (
+            <li
+              key={sub}
+              className="flex items-start gap-2 text-sm text-slate-300"
+            >
+              <Check size={14} className="mt-1 shrink-0 text-blue-400" />
+              {sub}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 }
 
@@ -372,6 +546,7 @@ function BillingToggle({
 
 export default function SoftwareLanding() {
   const [annual, setAnnual] = useState(false);
+  const [openModule, setOpenModule] = useState<string | null>(null);
 
   return (
     <div className="min-h-screen bg-[#0b1120] text-white antialiased">
@@ -386,9 +561,9 @@ export default function SoftwareLanding() {
             fill
             priority
             sizes="100vw"
-            className="object-cover opacity-30"
+            className="object-cover opacity-60"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0b1120]/70 via-[#0b1120]/85 to-[#0b1120]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0b1120]/40 via-[#0b1120]/60 to-[#0b1120]" />
         </div>
 
         <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -522,21 +697,22 @@ export default function SoftwareLanding() {
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Todo lo que necesitas. Nada que no.
             </h2>
+            <p className="mt-4 text-slate-400">
+              11 departamentos conectados. Despliega cada uno para ver hasta dónde
+              llega el software.
+            </p>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {modules.map((m) => (
-              <div
+              <ModuleCard
                 key={m.title}
-                className="group rounded-xl border border-white/5 bg-white/[0.02] p-7 transition hover:border-white/10 hover:bg-white/[0.04]"
-              >
-                <m.icon
-                  size={24}
-                  className="mb-4 text-blue-400 transition group-hover:text-blue-300"
-                />
-                <h3 className="mb-2 text-[15px] font-semibold">{m.title}</h3>
-                <p className="text-sm leading-relaxed text-slate-400">{m.desc}</p>
-              </div>
+                mod={m}
+                open={openModule === m.title}
+                onToggle={() =>
+                  setOpenModule((prev) => (prev === m.title ? null : m.title))
+                }
+              />
             ))}
           </div>
         </div>
