@@ -575,7 +575,7 @@ export default function SoftwareLanding() {
             <Sparkles size={12} /> Software de gestión para hostelería
           </p>
           <h1 className="text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
-            El control de tu negocio,
+            El control de tu restaurante,
             <br />
             <span className="text-blue-400">en un solo lugar</span>
           </h1>
