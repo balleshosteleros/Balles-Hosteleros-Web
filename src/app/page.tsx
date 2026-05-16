@@ -1371,22 +1371,22 @@ export default function SoftwareLanding() {
               </p>
               <ul className="mt-4 space-y-3 text-sm text-slate-500">
                 <li>
-                  <a href="#" className="hover:text-slate-300">
+                  <a href="/legal/aviso-legal" className="hover:text-slate-300">
                     Aviso legal
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-slate-300">
+                  <a href="/legal/privacidad" className="hover:text-slate-300">
                     Privacidad
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-slate-300">
+                  <a href="/legal/cookies" className="hover:text-slate-300">
                     Cookies
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-slate-300">
+                  <a href="/legal/terminos" className="hover:text-slate-300">
                     Términos
                   </a>
                 </li>
